@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
+// import ReactDOM from "react-dom";
 
 import App from "./App";
 
@@ -12,9 +12,26 @@ import App from "./App";
 
 // problem z helmet'em jest taki że to podmienia tagi ale z użyciem JavaScirpt więc jak np udostępnisz link komuś do podstrony to JavaScript się nie uruchomi więc nie zaczyta zmienionych meta tagów. Problem ten rozwiązuje albo SSR albo react-snap
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById("root")
-);
+// 5 - yarn add react-snap
+// 6 - nie używasz już ReactDOM.render() tylko zamiast tego korzystasz z funkcji hydrate z biblioteki react-dom w pliku index.js :
+// 7 - zmieniasz plik package.json gdzie dodajesz nowy script "postbuild": "react-snap" . Jak wtedy uruchomisz komendę yarn build to najpierw zrobi się zwykły build a potem wykona się react-snap który przeleci wszystkie routy i zrobi z dla nich osobne pliki ndex.html które będą miały osobne meta tagi utworzone na podstawie react-helmet
+
+import { hydrate, render } from "react-dom";
+
+const rootElement = document.getElementById("root");
+if (rootElement.hasChildNodes()) {
+  hydrate(<App />, rootElement);
+} else {
+  render(<App />, rootElement);
+}
+
+//  -------------------------------------------
+
+//// poniższy kod już nie jest potrzebny bo zakotwiczamy cały kod JS do HTMLa przy użyciu innej metody
+
+// ReactDOM.render(
+//   <React.StrictMode>
+//     <App />
+//   </React.StrictMode>,
+//   document.getElementById("root")
+// );
