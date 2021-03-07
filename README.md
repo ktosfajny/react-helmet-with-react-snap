@@ -1,3 +1,25 @@
+# react-helmet with react-snap:
+
+1 - instaluejsz react-helmet
+2 - robisz HelmetDecorator czy inny wrapper, jest to komponent który za pomocą react-helmet ustawi odpowiednie meta tagi
+3 - u każdym roucie importujesz ten decorator i w propach podajesz mu tagi i ich zawartosć
+4 - WAŻNE: w public/index.html MUSISZ NADAĆ ATRYBUT data-react-helpet="true" DO KAŻDEGO TAGU KTÓRY MA BYĆ PODMIENIONY DZIEKI react-helmet aby to działało. Oprócz tego dany meta tag który ma byc podmieniany i ma ten attrybut MUSI BYĆ TAKIEM ZAMKNIĘTYM czyli musi byc <tag />
+
+// problem z helmet'em jest taki że to podmienia tagi ale z użyciem JavaScirpt więc jak np udostępnisz link komuś do podstrony to JavaScript się nie uruchomi więc nie zaczyta zmienionych meta tagów. Problem ten rozwiązuje albo SSR albo react-snap
+
+5 - yarn add react-snap
+6 - nie używasz już ReactDOM.render() tylko zamiast tego korzystasz z funkcji hydrate z biblioteki react-dom w pliku index.js :
+7 - zmieniasz plik package.json gdzie dodajesz nowy script "postbuild": "react-snap" . Jak wtedy uruchomisz komendę yarn build to najpierw zrobi się zwykły build a potem wykona się react-snap który przeleci wszystkie routy i zrobi z dla nich osobne pliki ndex.html które będą miały osobne meta tagi utworzone na podstawie react-helmet
+
+// ---------------------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------------
+// link do playlisty kanału gdzie znalazłem te informacje:
+// https://www.youtube.com/watch?v=PjpPJfolInU&list=PLNkfllcUq3AkdeD4Aqp_Z2AIGyyF00_d8&index=140
+
+`Wszystko jest też opisane w src/index.js`
+
+---
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -28,43 +50,3 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
