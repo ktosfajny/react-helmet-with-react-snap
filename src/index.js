@@ -16,6 +16,11 @@ import App from "./App";
 // 6 - nie używasz już ReactDOM.render() tylko zamiast tego korzystasz z funkcji hydrate z biblioteki react-dom w pliku index.js :
 // 7 - zmieniasz plik package.json gdzie dodajesz nowy script "postbuild": "react-snap" . Jak wtedy uruchomisz komendę yarn build to najpierw zrobi się zwykły build a potem wykona się react-snap który przeleci wszystkie routy i zrobi z dla nich osobne pliki ndex.html które będą miały osobne meta tagi utworzone na podstawie react-helmet
 
+// ---------------------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------------
+// link do playlisty kanału gdzie znalazłem te informacje:
+// https://www.youtube.com/watch?v=PjpPJfolInU&list=PLNkfllcUq3AkdeD4Aqp_Z2AIGyyF00_d8&index=140
+
 import { hydrate, render } from "react-dom";
 
 const rootElement = document.getElementById("root");
