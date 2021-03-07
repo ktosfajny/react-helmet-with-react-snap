@@ -9,12 +9,10 @@ const Router = () => {
     <>
     <BrowserRouter>
       <Switch>
-
         <Route path="/" exact component={Home} />
         <Route path="/about" exact component={About} />
         <Route path="/contact" exact component={Contact} />
-        <Route component={NotFound}/>
-        <NotFound/>
+        <Route component={NotFound} />
       </Switch>
     </BrowserRouter>
     </>
