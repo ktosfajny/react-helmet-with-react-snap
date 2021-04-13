@@ -16,6 +16,9 @@ import App from "./App";
 // 6 - nie używasz już ReactDOM.render() tylko zamiast tego korzystasz z funkcji hydrate z biblioteki react-dom w pliku index.js :
 // 7 - zmieniasz plik package.json gdzie dodajesz nowy script "postbuild": "react-snap" . Jak wtedy uruchomisz komendę yarn build to najpierw zrobi się zwykły build a potem wykona się react-snap który przeleci wszystkie routy i zrobi z dla nich osobne pliki ndex.html które będą miały osobne meta tagi utworzone na podstawie react-helmet
 
+// INFO - snap działa niezaleznie od helmet i `tylko dla podstron z react-router` (utworzy index.html tylko dla stron które są w react-router i to `nawet jeśli nieużywają helmet`)
+// INFO - helmet działa na każdej podstronie nawet jeśli nie jest zalinkowana w react-router
+// INFO - jeśli masz w react-router ścieżkę `/product/:id` i np w `Nav` (lub innym komponencie) linki przenoszące pod `/product/1` oraz `/product/2` to snap utworzy 2 osobne pliki index.html dla productu 1 i produktu 2
 // ---------------------------------------------------------------------------------------------
 // ---------------------------------------------------------------------------------------------
 // link do playlisty kanału gdzie znalazłem te informacje:

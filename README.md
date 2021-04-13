@@ -16,6 +16,12 @@
 // link do playlisty kanału gdzie znalazłem te informacje:
 // https://www.youtube.com/watch?v=PjpPJfolInU&list=PLNkfllcUq3AkdeD4Aqp_Z2AIGyyF00_d8&index=140
 
+## KIEDY DZIALA HELMET I SNAP:
+
+1 - snap działa niezaleznie od helmet i `tylko dla podstron z react-router` (utworzy index.html tylko dla stron które są w react-router i to `nawet jeśli nieużywają helmet`)
+2 - helmet działa na każdej podstronie nawet jeśli nie jest zalinkowana w react-router
+3 - jeśli masz w react-router ścieżkę `/product/:id` i np w `Nav` (lub innym komponencie) linki przenoszące pod `/product/1` oraz `/product/2` to snap utworzy 2 osobne pliki index.html dla productu 1 i produktu 2
+
 `Wszystko jest też opisane w src/index.js`
 
 ---
